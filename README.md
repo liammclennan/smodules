@@ -8,7 +8,7 @@ Usage
 
 Call define to define a new module. Give the module a name and specify its dependencies.
 
-    define('a', ['b'], function (b) {
+    define('a', [], function () {
     
         // return module a
         return {
@@ -17,18 +17,17 @@ Call define to define a new module. Give the module a name and specify its depen
 
     });
 
-    define('b', [], function () {
+    define('b', ['a'], function (a) {
 
         return {
-            double: function (i) {
-                return i * 2;
+            doubleA: function () {
+                return a.val * 2;
             }
         };
 
     });
 
-    var a = require('a'),
-        b = require('b');
+    var b = require('b');
 
-    b.double(a.val);
+    b.doubleA();
     // => 4
