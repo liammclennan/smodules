@@ -49,7 +49,7 @@
     };
     
     function isArray(o) {
-        return toString.call(o) === '[object Array]';
+        return Array.isArray ? Array.isArray(o) :toString.call(o) === '[object Array]';
     }
 
 })(window);
